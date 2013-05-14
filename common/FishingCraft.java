@@ -39,13 +39,13 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import fishingCraft.common.blocks.FCBlock;
+import fishingCraft.common.config.Config;
 import fishingCraft.common.entity.projectile.EntityFishingHook;
 import fishingCraft.common.eventHooks.EventLancesHoe;
 import fishingCraft.common.items.FCItem;
 import fishingCraft.common.recipes.FCRecipe;
 import fishingCraft.common.renderer.BobberRenderer;
 import fishingCraft.common.world.blockGen;
-import fishingCraft.config.Config;
 import fishingCraft.shar.util.Debug;
 
 @Mod(modid = "FishingCraft", name = "Fishing Craft", version = "1.2.4")

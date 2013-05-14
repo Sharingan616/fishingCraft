@@ -1,4 +1,4 @@
-package fishingCraft.config;
+package fishingCraft.common.config;
 
 import net.minecraftforge.common.Configuration;
 

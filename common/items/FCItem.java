@@ -1,12 +1,12 @@
 package fishingCraft.common.items;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import fishingCraft.common.config.Config;
 import fishingCraft.common.items.fish.ItemFish;
 import fishingCraft.common.items.fish.ItemFishMeat;
 import fishingCraft.common.items.fish.ItemSeaFish;
 import fishingCraft.common.items.rods.ItemIronFishingRod;
 import fishingCraft.common.items.rods.ItemWoodenFishingRod;
-import fishingCraft.config.Config;
 import fishingCraft.shar.util.Debug;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;

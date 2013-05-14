@@ -4,10 +4,10 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import fishingCraft.common.blocks.plants.BlockWaterPlant;
 import fishingCraft.common.blocks.plants.BlockWeedWithEggs;
+import fishingCraft.common.config.Config;
 import fishingCraft.common.items.GenItem;
 import fishingCraft.common.items.fish.ItemFish;
 import fishingCraft.common.items.fish.ItemSeaFish;
-import fishingCraft.config.Config;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
