@@ -1,5 +1,8 @@
 package fishingCraft.common.items.fish;
 
+import java.util.List;
+import java.util.Random;
+
 import fishingCraft.common.CommonProxyFishingCraft;
 import fishingCraft.common.dictionary.ItemDictionary;
 import fishingCraft.common.items.FCItem;
@@ -20,6 +23,7 @@ import net.minecraftforge.common.ForgeHooks;
  */
 public class ItemFish extends ItemFood
 {
+	public double weight;
     public String name = "";
 
     public ItemFish(int par1, int par2, float par3, boolean par4, String n)
@@ -63,5 +67,21 @@ public class ItemFish extends ItemFood
     public void registerIcons(IconRegister iconRegister)
     {
         itemIcon = iconRegister.registerIcon("fishingCraft:fish/" + name);
+    }
+    
+    public void setWeight(double w)
+    {
+    	this.weight = w;
+    }
+    
+    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
+    {
+        	par3List.add("Weight: "+this.weight);
+    }
+    
+    @Override
+    public int getItemStackLimit()
+    {
+    	return 1;
     }
 }
