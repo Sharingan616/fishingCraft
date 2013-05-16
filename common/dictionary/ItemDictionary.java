@@ -2,6 +2,7 @@ package fishingCraft.common.dictionary;
 
 import fishingCraft.shar.util.Debug;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 /**
@@ -18,8 +19,7 @@ public class ItemDictionary
         String dictName = "FC." + i.getUnlocalizedName().substring("Item.".length());
         removeStringAfterChar(dictName, '#');
         OreDictionary.registerOre(dictName, i);
-        Debug.print(dictName+" [ENTER]");
-        //Debug.println("Added " + i + ", \"" + dictName + "\" to dictionary.");
+        Debug.println("Added " + i.getLocalizedName(new ItemStack(i)) + ", \"" + dictName + "\" to dictionary.");
     }
 
     public static boolean checkForChar(String s, char c)
