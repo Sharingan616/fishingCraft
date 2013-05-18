@@ -2,6 +2,8 @@ package fishingCraft.shar.util;
 
 import java.util.ArrayList;
 
+import fishingCraft.common.items.rods.ItemWoodenFishingRod;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
@@ -34,7 +36,7 @@ public class Debug {
 	 * Prints out givin input under the givin mod name if a boolean returns true, then ends the line.
 	 * @param s Object for printing.
 	 */
-	public static void println(String s)
+	public static void println(Object s)
 	{
 		if(debugger)
 			System.out.println("["+modName+"] "+s);
