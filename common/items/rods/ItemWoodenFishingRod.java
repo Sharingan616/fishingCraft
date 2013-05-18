@@ -2,6 +2,8 @@ package fishingCraft.common.items.rods;
 
 import java.util.List;
 
+import org.lwjgl.input.Mouse;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fishingCraft.common.dictionary.ItemDictionary;
@@ -9,6 +11,7 @@ import fishingCraft.common.entity.projectile.EntityFishingHook;
 import fishingCraft.shar.util.Debug;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFishingRod;
@@ -26,6 +29,7 @@ public class ItemWoodenFishingRod extends ItemFishingRod
     public String name = "";
     public boolean canBreak;
     public Item theBait;
+	public boolean MouseButtonIsDown = false;
 
     public ItemWoodenFishingRod(int par1)
     {
@@ -80,6 +84,15 @@ public class ItemWoodenFishingRod extends ItemFishingRod
         }
     }
 
+    @Override
+    public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5)
+    {
+        if(!Mouse.isButtonDown(1))
+        {
+        	this.MouseButtonIsDown = false;
+        }
+    }
+    
     /**
      * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
      */
@@ -99,7 +112,7 @@ public class ItemWoodenFishingRod extends ItemFishingRod
 
             //par3EntityPlayer.swingItem();
         }
-        else
+        else if(!this.MouseButtonIsDown)
         {
             par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 

@@ -2,6 +2,9 @@ package fishingCraft.common.entity.projectile;
 
 import java.util.List;
 
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fishingCraft.common.items.FCItem;
@@ -99,6 +102,7 @@ public class EntityFishingHook extends EntityFishHook
 
 	private boolean isThereAFish = false;
 
+
     public EntityFishingHook(World par1World)
     {
         super(par1World);
@@ -136,6 +140,15 @@ public class EntityFishingHook extends EntityFishHook
             this.setDead();
             this.angler.fishEntity = null;
             this.playSound("random.pop", 0.2F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
+            
+            if(Mouse.isButtonDown(1))
+            {
+            	if(this.equippedItem instanceof ItemWoodenFishingRod || this.equippedItem instanceof ItemIronFishingRod )
+            	{
+            		ItemWoodenFishingRod eq = (ItemWoodenFishingRod)equippedItem;
+            		eq.MouseButtonIsDown = true;
+            	}
+            }
         }
     }
 
