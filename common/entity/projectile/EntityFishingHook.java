@@ -91,6 +91,7 @@ public class EntityFishingHook extends EntityFishHook
     private BiomeGenBase riverSwamp;
     private BiomeGenBase riverPlains;
 
+    public ItemWoodenFishingRod eq;
     private Item equippedItem;
     private Item theBait;
     private Item fishToCatch = null;
@@ -99,8 +100,6 @@ public class EntityFishingHook extends EntityFishHook
     private long random = Math.round(Math.random()) * 100;
     private boolean shouldBreakRod = false;
     private boolean hasBeenCast = false;
-
-	private boolean isThereAFish = false;
 
 
     public EntityFishingHook(World par1World)
@@ -120,7 +119,7 @@ public class EntityFishingHook extends EntityFishHook
     {
     	if (this.hasBeenCast || this.inGround)
         {
-        	if(this.fishToCatch != null)
+        	if(this.eq.isThereAFish && this.fishToCatch != null)
         	{
 	            EntityItem fishy = new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, new ItemStack(fishToCatch));
         		if(this.fishToCatch instanceof ItemFish)
@@ -132,7 +131,7 @@ public class EntityFishingHook extends EntityFishHook
 	            Debug.println("Caught a "+this.fishToCatch.getItemDisplayName(new ItemStack(this.fishToCatch))+".");
 	            this.angler.addStat(StatList.fishCaughtStat, 1);
 	            this.angler.worldObj.spawnEntityInWorld(new EntityXPOrb(this.angler.worldObj, this.angler.posX, this.angler.posY + 0.5D, this.angler.posZ + 0.5D, this.rand.nextInt(6) + 1));
-	            if (this.theBait != null && !this.angler.capabilities.isCreativeMode)
+	            if (this.theBait != null)
 	                destroyBait();
 	            else
 	                Debug.println("Bait is apparently null.");
@@ -145,7 +144,6 @@ public class EntityFishingHook extends EntityFishHook
             {
             	if(this.equippedItem instanceof ItemWoodenFishingRod || this.equippedItem instanceof ItemIronFishingRod )
             	{
-            		ItemWoodenFishingRod eq = (ItemWoodenFishingRod)equippedItem;
             		eq.MouseButtonIsDown = true;
             	}
             }
@@ -155,6 +153,8 @@ public class EntityFishingHook extends EntityFishHook
     @Override
     public void onUpdate()
     {
+    	if(this.equippedItem instanceof ItemWoodenFishingRod || this.equippedItem instanceof ItemIronFishingRod)
+    		eq = (ItemWoodenFishingRod)this.equippedItem;
         if (this.fishPosRotationIncrements > 0)
         {
             double d0 = this.posX + (this.fishX - this.posX) / (double)this.fishPosRotationIncrements;
@@ -355,7 +355,7 @@ public class EntityFishingHook extends EntityFishHook
                             short1 = 300;
                         }
 
-                        if ((this.rand.nextInt(short1) == 0 || (this.angler.isSneaking() && Debug.debugger)) && canCatch())
+                        if (!this.eq.isThereAFish && (this.rand.nextInt(short1) == 0 || (this.angler.isSneaking() && Debug.debugger)) && canCatch())
                         {
                         	Debug.println("There is a "+this.fishToCatch.getItemDisplayName(new ItemStack(this.fishToCatch))+" on the line.");
                             this.ticksCatchable = this.rand.nextInt(30) + 10;
@@ -478,14 +478,9 @@ public class EntityFishingHook extends EntityFishHook
             }
             else if (this.ticksCatchable > 0)
             {
-            	this.isThereAFish = true;
+            	this.eq.isThereAFish = true;
                 if (this.shouldBreakRod)
-                {
                     breakRod();
-                }
-                //                entityitem.motionX = d5 * d9;
-                //                entityitem.motionY = d6 * d9 + (double)MathHelper.sqrt_double(d8) * 0.08D;
-                //                entityitem.motionZ = d7 * d9;;
                 b0 = 1;
             }
 
@@ -497,7 +492,6 @@ public class EntityFishingHook extends EntityFishHook
             if (this.inWater)
             {
                 this.inWater = false;
-                //this.addVelocity(, d6 * d9 + (double)MathHelper.sqrt_double(d8) * 0.08D, );
                 this.motionX = d5 / 4 * d9;
                 this.motionZ = d7 / 4 * d9;
                 this.setPosition(this.posX, this.posY, this.posZ);
@@ -733,15 +727,18 @@ public class EntityFishingHook extends EntityFishHook
     {
         int damage = this.angler.getCurrentEquippedItem().getItemDamage();
 
-        if (this.equippedItem instanceof ItemIronFishingRod)
+        if(!this.angler.capabilities.isCreativeMode)
         {
-            this.angler.inventory.setInventorySlotContents(this.angler.inventory.currentItem, new ItemStack(FCItem.ironFishingRod, 1, damage + 2));
-            Debug.println("Destroyed iron fishing rod bait.");
-        }
-        else if (this.equippedItem instanceof ItemWoodenFishingRod)
-        {
-            this.angler.inventory.setInventorySlotContents(this.angler.inventory.currentItem, new ItemStack(FCItem.woodenFishingRod, 1, damage + 2));
-            Debug.println("Destroyed wooden fishing rod bait.");
+	        if (this.equippedItem instanceof ItemIronFishingRod)
+	        {
+	            this.angler.inventory.setInventorySlotContents(this.angler.inventory.currentItem, new ItemStack(FCItem.ironFishingRod, 1, damage + 2));
+	            Debug.println("Destroyed iron fishing rod bait.");
+	        }
+	        else if (this.equippedItem instanceof ItemWoodenFishingRod)
+	        {
+	            this.angler.inventory.setInventorySlotContents(this.angler.inventory.currentItem, new ItemStack(FCItem.woodenFishingRod, 1, damage + 2));
+	            Debug.println("Destroyed wooden fishing rod bait.");
+	        }
         }
     }
 

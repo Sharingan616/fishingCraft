@@ -30,6 +30,7 @@ public class ItemWoodenFishingRod extends ItemFishingRod
     public boolean canBreak;
     public Item theBait;
 	public boolean MouseButtonIsDown = false;
+	public boolean isThereAFish = false;
 
     public ItemWoodenFishingRod(int par1)
     {
@@ -90,6 +91,7 @@ public class ItemWoodenFishingRod extends ItemFishingRod
         if(!Mouse.isButtonDown(1))
         {
         	this.MouseButtonIsDown = false;
+        	this.isThereAFish = false;
         }
     }
     
