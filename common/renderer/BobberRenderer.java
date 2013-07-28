@@ -1,0 +1,149 @@
+package fishingcraft.common.renderer;
+
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
+
+import fishingcraft.common.CommonProxyFishingCraft;
+import fishingcraft.common.items.FCItem;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.entity.RenderFish;
+import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
+import net.minecraft.entity.projectile.EntityFishHook;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Vec3;
+
+/**
+ * Rendering class for the bobber.
+ * Overrides normal fishing hook rendering.
+ * Replaces textures and line color, etc.
+ * @author Sharingan616
+ *
+ */
+public class BobberRenderer extends RenderFish
+{
+    @Override
+    public void doRenderFishHook(EntityFishHook par1EntityFishHook, double par2, double par4, double par6, float par8, float par9)
+    {
+        GL11.glPushMatrix();
+        GL11.glTranslatef((float)par2, (float)par4, (float)par6);
+        GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+        GL11.glScalef(0.5F, 0.5F, 0.5F);
+        byte var10 = 0;
+        byte var11 = 3;
+        this.renderManager.renderEngine.func_110577_a(
+        		new ResourceLocation("fishingcraft:textures/particles.png"));
+        try
+        {
+            Item i = null;
+
+            if (par1EntityFishHook.angler.getCurrentEquippedItem() != null)
+            {
+                i = par1EntityFishHook.angler.getCurrentEquippedItem().getItem();
+            }
+
+            if (i == FCItem.woodenFishingRodWorm || i == FCItem.ironFishingRodWorm)
+            {
+                var10 = 1;
+            }
+
+            if (i == FCItem.woodenFishingRodBG || i == FCItem.ironFishingRodBG)
+            {
+                var10 = 2;
+            }
+
+            if (i == FCItem.woodenFishingRodFrogEggs || i == FCItem.ironFishingRodFrogEggs)
+            {
+                var10 = 3;
+            }
+
+            if (i == FCItem.woodenFishingRodMorsel || i == FCItem.ironFishingRodMorsel)
+            {
+                var10 = 4;
+            }
+
+            if (i == FCItem.woodenFishingRodSP || i == FCItem.ironFishingRodSP)
+            {
+                var10 = 5;
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println("----");
+            System.out.println("Exception caught: " + e + ", caused by Fishing Craft.");
+            e.printStackTrace();
+            System.out.println("----");
+        }
+
+        Tessellator var12 = Tessellator.instance;
+        float var13 = (float)(var10 * 8 + 0) / 128.0F;
+        float var14 = (float)(var10 * 8 + 8) / 128.0F;
+        float var15 = (float)(var11 * 8 + 0) / 128.0F;
+        float var16 = (float)(var11 * 8 + 8) / 128.0F;
+        float var17 = 1.0F;
+        float var18 = 0.5F;
+        float var19 = 0.5F;
+        GL11.glRotatef(180.0F - this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
+        GL11.glRotatef(-this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
+        var12.startDrawingQuads();
+        var12.setNormal(0.0F, 1.0F, 0.0F);
+        var12.addVertexWithUV((double)(0.0F - var18), (double)(0.0F - var19), 0.0D, (double)var13, (double)var16);
+        var12.addVertexWithUV((double)(var17 - var18), (double)(0.0F - var19), 0.0D, (double)var14, (double)var16);
+        var12.addVertexWithUV((double)(var17 - var18), (double)(1.0F - var19), 0.0D, (double)var14, (double)var15);
+        var12.addVertexWithUV((double)(0.0F - var18), (double)(1.0F - var19), 0.0D, (double)var13, (double)var15);
+        var12.draw();
+        GL11.glDisable(GL12.GL_RESCALE_NORMAL);
+        GL11.glPopMatrix();
+
+        if (par1EntityFishHook.angler != null)
+        {
+            float var20 = par1EntityFishHook.angler.getSwingProgress(par9);
+            float var21 = MathHelper.sin(MathHelper.sqrt_float(var20) * (float)Math.PI);
+            Vec3 var22 = par1EntityFishHook.worldObj.getWorldVec3Pool().getVecFromPool(-0.5D, 0.03D, 0.8D);
+            var22.rotateAroundX(-(par1EntityFishHook.angler.prevRotationPitch + (par1EntityFishHook.angler.rotationPitch - par1EntityFishHook.angler.prevRotationPitch) * par9) * (float)Math.PI / 180.0F);
+            var22.rotateAroundY(-(par1EntityFishHook.angler.prevRotationYaw + (par1EntityFishHook.angler.rotationYaw - par1EntityFishHook.angler.prevRotationYaw) * par9) * (float)Math.PI / 180.0F);
+            var22.rotateAroundY(var21 * 0.5F);
+            var22.rotateAroundX(-var21 * 0.7F);
+            double var23 = par1EntityFishHook.angler.prevPosX + (par1EntityFishHook.angler.posX - par1EntityFishHook.angler.prevPosX) * (double)par9 + var22.xCoord;
+            double var25 = par1EntityFishHook.angler.prevPosY + (par1EntityFishHook.angler.posY - par1EntityFishHook.angler.prevPosY) * (double)par9 + var22.yCoord;
+            double var27 = par1EntityFishHook.angler.prevPosZ + (par1EntityFishHook.angler.posZ - par1EntityFishHook.angler.prevPosZ) * (double)par9 + var22.zCoord;
+            double var29 = par1EntityFishHook.angler != Minecraft.getMinecraft().thePlayer ? (double)par1EntityFishHook.angler.getEyeHeight() : 0.0D;
+
+            if (this.renderManager.options.thirdPersonView > 0 || par1EntityFishHook.angler != Minecraft.getMinecraft().thePlayer)
+            {
+                float var31 = (par1EntityFishHook.angler.prevRenderYawOffset + (par1EntityFishHook.angler.renderYawOffset - par1EntityFishHook.angler.prevRenderYawOffset) * par9) * (float)Math.PI / 180.0F;
+                double var32 = (double)MathHelper.sin(var31);
+                double var34 = (double)MathHelper.cos(var31);
+                var23 = par1EntityFishHook.angler.prevPosX + (par1EntityFishHook.angler.posX - par1EntityFishHook.angler.prevPosX) * (double)par9 - var34 * 0.35D - var32 * 0.85D;
+                var25 = par1EntityFishHook.angler.prevPosY + var29 + (par1EntityFishHook.angler.posY - par1EntityFishHook.angler.prevPosY) * (double)par9 - 0.45D;
+                var27 = par1EntityFishHook.angler.prevPosZ + (par1EntityFishHook.angler.posZ - par1EntityFishHook.angler.prevPosZ) * (double)par9 - var32 * 0.35D + var34 * 0.85D;
+            }
+
+            double var46 = par1EntityFishHook.prevPosX + (par1EntityFishHook.posX - par1EntityFishHook.prevPosX) * (double)par9;
+            double var33 = par1EntityFishHook.prevPosY + (par1EntityFishHook.posY - par1EntityFishHook.prevPosY) * (double)par9 + 0.25D;
+            double var35 = par1EntityFishHook.prevPosZ + (par1EntityFishHook.posZ - par1EntityFishHook.prevPosZ) * (double)par9;
+            double var37 = (double)((float)(var23 - var46));
+            double var39 = (double)((float)(var25 - var33));
+            double var41 = (double)((float)(var27 - var35));
+            GL11.glDisable(GL11.GL_TEXTURE_2D);
+            GL11.glDisable(GL11.GL_LIGHTING);
+            var12.startDrawing(3);
+            //var12.setColorOpaque_I(0);
+            var12.setColorRGBA(192, 192, 192, 255);
+            byte var43 = 16;
+
+            for (int var44 = 0; var44 <= var43; ++var44)
+            {
+                float var45 = (float)var44 / (float)var43;
+                var12.addVertex(par2 + var37 * (double)var45, par4 + var39 * (double)(var45 * var45 + var45) * 0.5D + 0.25D, par6 + var41 * (double)var45);
+            }
+
+            var12.draw();
+            GL11.glEnable(GL11.GL_LIGHTING);
+            GL11.glEnable(GL11.GL_TEXTURE_2D);
+        }
+    }
+}
