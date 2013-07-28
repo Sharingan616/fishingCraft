@@ -1,4 +1,4 @@
-package fishingCraft.shar.util;
+package fishingcraft.shar.util;
 
 import java.util.ArrayList;
 

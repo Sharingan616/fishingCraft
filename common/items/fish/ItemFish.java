@@ -1,12 +1,12 @@
-package fishingCraft.common.items.fish;
+package fishingcraft.common.items.fish;
 
 import java.util.List;
 import java.util.Random;
 
-import fishingCraft.common.CommonProxyFishingCraft;
-import fishingCraft.common.dictionary.ItemDictionary;
-import fishingCraft.common.items.FCItem;
-import fishingCraft.shar.util.Debug;
+import fishingcraft.common.CommonProxyFishingCraft;
+import fishingcraft.common.dictionary.ItemDictionary;
+import fishingcraft.common.items.FCItem;
+import fishingcraft.shar.util.Debug;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;

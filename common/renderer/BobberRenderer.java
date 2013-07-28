@@ -1,18 +1,19 @@
-package fishingCraft.common.renderer;
+package fishingcraft.common.renderer;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import fishingCraft.common.CommonProxyFishingCraft;
-import fishingCraft.common.items.FCItem;
-
+import fishingcraft.common.CommonProxyFishingCraft;
+import fishingcraft.common.items.FCItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderFish;
+import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3;
 
 /**
@@ -33,8 +34,8 @@ public class BobberRenderer extends RenderFish
         GL11.glScalef(0.5F, 0.5F, 0.5F);
         byte var10 = 0;
         byte var11 = 3;
-        this.loadTexture(CommonProxyFishingCraft.PARTS_PNG);
-
+        this.renderManager.renderEngine.func_110577_a(
+        		new ResourceLocation("fishingcraft:textures/particles.png"));
         try
         {
             Item i = null;

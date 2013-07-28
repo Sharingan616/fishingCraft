@@ -1,8 +1,8 @@
-package fishingCraft.common.client;
+package fishingcraft.common.client;
 
-import fishingCraft.common.CommonProxyFishingCraft;
-import fishingCraft.common.items.FCItem;
-import fishingCraft.common.renderer.RodRenderer;
+import fishingcraft.common.CommonProxyFishingCraft;
+import fishingcraft.common.items.FCItem;
+import fishingcraft.common.renderer.RodRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 /**
@@ -15,6 +15,7 @@ public class ClientProxyFishingCraft extends CommonProxyFishingCraft
     @Override
     public void registerRenderers()
     {
-        //TODO MinecraftForgeClient.registerItemRenderer(FCItem.woodenFishingRod.itemID, new RodRenderer());
+    	MinecraftForgeClient.registerItemRenderer(FCItem.woodenFishingRod.itemID, new RodRenderer());
+        //Done!
     }
 }

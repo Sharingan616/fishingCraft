@@ -1,9 +1,9 @@
-package fishingCraft.common.blocks.plants;
+package fishingcraft.common.blocks.plants;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import fishingCraft.common.CommonProxyFishingCraft;
+import fishingcraft.common.CommonProxyFishingCraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.BlockTallGrass;

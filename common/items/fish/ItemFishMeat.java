@@ -1,12 +1,12 @@
-package fishingCraft.common.items.fish;
+package fishingcraft.common.items.fish;
 
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
-import fishingCraft.common.dictionary.ItemDictionary;
-import fishingCraft.common.items.FCItem;
+import fishingcraft.common.dictionary.ItemDictionary;
+import fishingcraft.common.items.FCItem;
 
 /**
  * This class defines the meat which you can obtain from fish. 

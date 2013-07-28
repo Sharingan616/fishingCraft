@@ -1,4 +1,4 @@
-package fishingCraft.common.world;
+package fishingcraft.common.world;
 
 import java.util.Random;
 
@@ -8,8 +8,8 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 
 import cpw.mods.fml.common.IWorldGenerator;
-import fishingCraft.common.blocks.FCBlock;
-import fishingCraft.shar.util.Debug;
+import fishingcraft.common.blocks.FCBlock;
+import fishingcraft.shar.util.Debug;
 
 /**
  * This class is used to generate custom blocks into the Minecraft world.
