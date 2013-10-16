@@ -1,4 +1,4 @@
-package fishingCraft.shar.util;
+package fishingcraft.shar.util;
 
 /**
  * This class defines popular text colors as strings.

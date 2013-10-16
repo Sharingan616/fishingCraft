@@ -1,4 +1,4 @@
-package fishingCraft.common;
+package fishingcraft.common;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,30 +25,28 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.PostInit;
-import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.ModContainer;
 import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import fishingCraft.common.blocks.FCBlock;
-import fishingCraft.common.config.Config;
-import fishingCraft.common.entity.projectile.EntityFishingHook;
-import fishingCraft.common.eventHooks.EventLancesHoe;
-import fishingCraft.common.items.FCItem;
-import fishingCraft.common.recipes.FCRecipe;
-import fishingCraft.common.renderer.BobberRenderer;
-import fishingCraft.common.world.blockGen;
-import fishingCraft.shar.util.Debug;
+import fishingcraft.common.blocks.FCBlock;
+import fishingcraft.common.config.Config;
+import fishingcraft.common.entity.projectile.EntityFishingHook;
+import fishingcraft.common.eventHooks.EventLancesHoe;
+import fishingcraft.common.items.FCItem;
+import fishingcraft.common.recipes.FCRecipe;
+import fishingcraft.common.renderer.BobberRenderer;
+import fishingcraft.common.world.blockGen;
+import fishingcraft.shar.util.Debug;
 
-@Mod(modid = "FishingCraft", name = "Fishing Craft", version = "1.2.4")
+@Mod(modid = "fishingcraft", name = "Fishing Craft", version = "2.0.0")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 
@@ -68,12 +66,12 @@ public class FishingCraft
     @Instance("FishingCraft")
     public static FishingCraft instance;
 
-    @SidedProxy(clientSide = "fishingCraft.common.client.ClientProxyFishingCraft", serverSide = "fishingCraft.common.CommonProxyFishingCraft")
+    @SidedProxy(clientSide = "fishingcraft.common.client.ClientProxyFishingCraft", serverSide = "fishingcraft.common.CommonProxyFishingCraft")
     public static CommonProxyFishingCraft proxy;
     public static FCItem fcItem;
     public static FCRecipe fcRecipe;
     public static FCBlock fcBlock;
-    @PreInit
+    @EventHandler
     public void preLoad(FMLPreInitializationEvent event)
     {
         Configuration config = new Configuration(event.getSuggestedConfigurationFile());
@@ -82,7 +80,7 @@ public class FishingCraft
         config.save();
     }
 
-    @Init
+    @EventHandler
     public void load(FMLInitializationEvent event)
     {
         Debug.modName = "Fishing Craft";
@@ -107,7 +105,7 @@ public class FishingCraft
         proxy.registerRenderers();
     }
 
-    @PostInit
+    @EventHandler
     public void postLoad(FMLPostInitializationEvent event)
     {
         GameRegistry.registerWorldGenerator(blockGenerator);

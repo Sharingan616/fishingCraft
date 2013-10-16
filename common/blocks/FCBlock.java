@@ -1,13 +1,13 @@
-package fishingCraft.common.blocks;
+package fishingcraft.common.blocks;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import fishingCraft.common.blocks.plants.BlockWaterPlant;
-import fishingCraft.common.blocks.plants.BlockWeedWithEggs;
-import fishingCraft.common.config.Config;
-import fishingCraft.common.items.GenItem;
-import fishingCraft.common.items.fish.ItemFish;
-import fishingCraft.common.items.fish.ItemSeaFish;
+import fishingcraft.common.blocks.plants.BlockWaterPlant;
+import fishingcraft.common.blocks.plants.BlockWeedWithEggs;
+import fishingcraft.common.config.Config;
+import fishingcraft.common.items.GenItem;
+import fishingcraft.common.items.fish.ItemFish;
+import fishingcraft.common.items.fish.ItemSeaFish;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 

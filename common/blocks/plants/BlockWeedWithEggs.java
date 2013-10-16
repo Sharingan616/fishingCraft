@@ -1,10 +1,10 @@
-package fishingCraft.common.blocks.plants;
+package fishingcraft.common.blocks.plants;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import fishingCraft.common.blocks.FCBlock;
-import fishingCraft.common.items.FCItem;
+import fishingcraft.common.blocks.FCBlock;
+import fishingcraft.common.items.FCItem;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;

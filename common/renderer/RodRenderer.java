@@ -1,4 +1,4 @@
-package fishingCraft.common.renderer;
+package fishingcraft.common.renderer;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;

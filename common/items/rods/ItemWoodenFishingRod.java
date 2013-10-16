@@ -1,4 +1,4 @@
-package fishingCraft.common.items.rods;
+package fishingcraft.common.items.rods;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import org.lwjgl.input.Mouse;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fishingCraft.common.dictionary.ItemDictionary;
-import fishingCraft.common.entity.projectile.EntityFishingHook;
-import fishingCraft.shar.util.Debug;
+import fishingcraft.common.dictionary.ItemDictionary;
+import fishingcraft.common.entity.projectile.EntityFishingHook;
+import fishingcraft.shar.util.Debug;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;

@@ -1,6 +1,6 @@
-package fishingCraft.common.dictionary;
+package fishingcraft.common.dictionary;
 
-import fishingCraft.shar.util.Debug;
+import fishingcraft.shar.util.Debug;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;

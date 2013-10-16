@@ -1,4 +1,4 @@
-package fishingCraft.common.entity.projectile;
+package fishingcraft.common.entity.projectile;
 
 import java.util.List;
 
@@ -7,12 +7,12 @@ import org.lwjgl.input.Mouse;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fishingCraft.common.items.FCItem;
-import fishingCraft.common.items.fish.ItemFish;
-import fishingCraft.common.items.fish.ItemSeaFish;
-import fishingCraft.common.items.rods.ItemIronFishingRod;
-import fishingCraft.common.items.rods.ItemWoodenFishingRod;
-import fishingCraft.shar.util.Debug;
+import fishingcraft.common.items.FCItem;
+import fishingcraft.common.items.fish.ItemFish;
+import fishingcraft.common.items.fish.ItemSeaFish;
+import fishingcraft.common.items.rods.ItemIronFishingRod;
+import fishingcraft.common.items.rods.ItemWoodenFishingRod;
+import fishingcraft.shar.util.Debug;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -226,7 +226,7 @@ public class EntityFishingHook extends EntityFishHook
 
             Vec3 vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
             Vec3 vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
-            MovingObjectPosition movingobjectposition = this.worldObj.rayTraceBlocks(vec3, vec31);
+            MovingObjectPosition movingobjectposition = this.worldObj.rayTraceBlocks_do_do(vec3, vec31, hasBeenCast, hasBeenCast);
             vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
             vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 

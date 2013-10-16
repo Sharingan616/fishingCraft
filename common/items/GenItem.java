@@ -1,7 +1,7 @@
-package fishingCraft.common.items;
+package fishingcraft.common.items;
 
-import fishingCraft.common.CommonProxyFishingCraft;
-import fishingCraft.common.dictionary.ItemDictionary;
+import fishingcraft.common.CommonProxyFishingCraft;
+import fishingcraft.common.dictionary.ItemDictionary;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 

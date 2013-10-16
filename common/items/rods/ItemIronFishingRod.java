@@ -1,4 +1,4 @@
-package fishingCraft.common.items.rods;
+package fishingcraft.common.items.rods;
 
 import java.util.List;
 

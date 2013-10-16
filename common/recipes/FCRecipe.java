@@ -1,9 +1,9 @@
-package fishingCraft.common.recipes;
+package fishingcraft.common.recipes;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import fishingCraft.common.items.FCItem;
-import fishingCraft.shar.util.Debug;
-import fishingCraft.shar.util.ItemHelper;
+import fishingcraft.common.items.FCItem;
+import fishingcraft.shar.util.Debug;
+import fishingcraft.shar.util.ItemHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 

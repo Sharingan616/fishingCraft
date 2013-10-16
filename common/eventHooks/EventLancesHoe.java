@@ -1,7 +1,7 @@
-package fishingCraft.common.eventHooks;
+package fishingcraft.common.eventHooks;
 
-import fishingCraft.common.items.FCItem;
-import fishingCraft.shar.util.Debug;
+import fishingcraft.common.items.FCItem;
+import fishingcraft.shar.util.Debug;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;

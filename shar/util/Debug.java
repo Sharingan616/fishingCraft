@@ -1,8 +1,8 @@
-package fishingCraft.shar.util;
+package fishingcraft.shar.util;
 
 import java.util.ArrayList;
 
-import fishingCraft.common.items.rods.ItemWoodenFishingRod;
+import fishingcraft.common.items.rods.ItemWoodenFishingRod;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;

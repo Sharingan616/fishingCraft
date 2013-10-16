@@ -1,13 +1,13 @@
-package fishingCraft.common.items;
+package fishingcraft.common.items;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import fishingCraft.common.config.Config;
-import fishingCraft.common.items.fish.ItemFish;
-import fishingCraft.common.items.fish.ItemFishMeat;
-import fishingCraft.common.items.fish.ItemSeaFish;
-import fishingCraft.common.items.rods.ItemIronFishingRod;
-import fishingCraft.common.items.rods.ItemWoodenFishingRod;
-import fishingCraft.shar.util.Debug;
+import fishingcraft.common.config.Config;
+import fishingcraft.common.items.fish.ItemFish;
+import fishingcraft.common.items.fish.ItemFishMeat;
+import fishingcraft.common.items.fish.ItemSeaFish;
+import fishingcraft.common.items.rods.ItemIronFishingRod;
+import fishingcraft.common.items.rods.ItemWoodenFishingRod;
+import fishingcraft.shar.util.Debug;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
