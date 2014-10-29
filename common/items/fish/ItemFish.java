@@ -3,16 +3,21 @@ package fishingcraft.common.items.fish;
 import java.util.List;
 import java.util.Random;
 
-import fishingcraft.common.CommonProxyFishingCraft;
-import fishingcraft.common.dictionary.ItemDictionary;
-import fishingcraft.common.items.FCItem;
+import cpw.mods.fml.common.registry.GameRegistry;
+
+import fishingcraft.common.entity.EntityDroppedFish;
+import fishingcraft.common.items.FCItems;
+import fishingcraft.main.FishingCraft;
 import fishingcraft.shar.util.Debug;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
+//import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+//import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
@@ -23,60 +28,70 @@ import net.minecraftforge.common.ForgeHooks;
  */
 public class ItemFish extends ItemFood
 {
-	public double weight;
     public String name = "";
 
-    public ItemFish(int par1, int par2, float par3, boolean par4, String n)
+    public ItemFish(int par1, float par2, String n)
     {
-        super(par1, par2, par3, par4);
-        this.setName(n);
+    	super(par1, par2, false);
+    	this.setName(n);
+        this.setMaxDamage(-10000);
+        GameRegistry.registerItem(this,n);
+        setTextureName(FishingCraft.MODID.toLowerCase()+":fish/"+n);
+    	this.setCreativeTab(FishingCraft.fcTab);
+    }
+    
+    public ItemFish(int par1, String n)
+    {
+    	super(par1, false);
+    	this.setName(n);
+        this.setMaxDamage(-10000);
+        GameRegistry.registerItem(this,n);
+        setTextureName(FishingCraft.MODID.toLowerCase()+":fish/"+n);
+    	this.setCreativeTab(FishingCraft.fcTab);
     }
 
-    public ItemFish(int par1, int par2, boolean par3, String n)
+    public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player)
     {
-        super(par1, par2, par3);
-        this.setName(n);
-    }
-
-    public ItemFish(int par1, int par2, float par3, String n)
-    {
-        super(par1, par2, par3, false);
-        this.setName(n);
-    }
-
-    public ItemStack onEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
-    {
-        //Drop Fish Bones
-        ForgeHooks.onPlayerTossEvent(par3EntityPlayer, new ItemStack(FCItem.fishBones));
         //Reduce stack size of consumed fish by 1
-        --par1ItemStack.stackSize;
-        par3EntityPlayer.getFoodStats().addStats(this);
-        par2World.playSoundAtEntity(par3EntityPlayer, "random.burp", 0.5F, par2World.rand.nextFloat() * 0.1F + 0.9F);
-        this.onFoodEaten(par1ItemStack, par2World, par3EntityPlayer);
-        return par1ItemStack;
+    	double weight = this.getWeight(stack);
+    	int calculation = (int)(weight/weight)*100;
+    	
+    	this.setDamage(stack, getDamage(stack)+calculation);
+        Debug.println("Damage: "+calculation+", Weight: "+weight);
+        if(this.getWeight(stack) <= 0){
+            //Drop Fish Bones
+            ForgeHooks.onPlayerTossEvent(player, new ItemStack(FCItems.fishbones), true);
+            //Destroy Item
+        	--stack.stackSize;
+        }
+        player.getFoodStats().func_151686_a(this, stack);
+        world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+        this.onFoodEaten(stack, world, player);
+        return stack;
     }
 
     public void setName(String n)
     {
         this.name = n;
         this.setUnlocalizedName(n);
-        ItemDictionary.add(this);
-    }
-
-    @Override
-    public void registerIcons(IconRegister iconRegister)
-    {
-        itemIcon = iconRegister.registerIcon("fishingCraft:fish/" + name);
     }
     
-    public void setWeight(double w)
+    public void setWeight(double w, ItemStack stack)
     {
-    	this.weight = w;
+    	int calculation = (int)((this.getWeight(stack)-w)*100.0);
+    	Debug.println("Calculation: "+calculation);
+    	this.setDamage(stack, calculation);
+    }
+    
+    public double getWeight(ItemStack stack)
+    {
+    	return (Math.abs(this.getMaxDamage())-this.getDamage(stack))/100.0;
     }
     
     public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
     {
-        	par3List.add("Weight: "+this.weight);
+    	if(this.getWeight(par1ItemStack) != 0)
+    		par3List.add("Weight: "+this.getWeight(par1ItemStack)+" lbs.");
     }
     
     @Override
@@ -84,4 +99,17 @@ public class ItemFish extends ItemFood
     {
     	return 1;
     }
+    
+    //TODO custom entity
+//    public boolean hasCustomEntity(ItemStack stack)
+//    {
+//        return true;
+//    }
+//    
+//    public Entity createEntity(World world, Entity location, ItemStack itemstack)
+//    {
+//    	Debug.println("Dropping fish.");
+//        return new EntityItem(world, location.posX, location.posY, location.posZ, itemstack);
+//    }
+    
 }

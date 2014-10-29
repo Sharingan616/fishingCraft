@@ -2,12 +2,11 @@ package fishingcraft.common.blocks;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import fishingcraft.common.blocks.other.BlockBeeHive;
 import fishingcraft.common.blocks.plants.BlockWaterPlant;
 import fishingcraft.common.blocks.plants.BlockWeedWithEggs;
-import fishingcraft.common.config.Config;
 import fishingcraft.common.items.GenItem;
 import fishingcraft.common.items.fish.ItemFish;
-import fishingcraft.common.items.fish.ItemSeaFish;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
@@ -20,47 +19,30 @@ import net.minecraft.item.Item;
  */
 public class FCBlock
 {
-    public static Block weed = (new BlockWaterPlant(Config.weeds_ID, "Weeds"));
-    public static Block weedWithEggs = (new BlockWeedWithEggs(Config.weedsWithEggs_ID, "Weeds_With_Eggs"));
-
+    public static Block weed = (new BlockWaterPlant("Weeds"));
+    public static Block weedWithEggs = (new BlockWeedWithEggs("Weeds_With_Eggs"));
+    public static Block beeHive = new BlockBeeHive("BeeHive");
+    
     public static void addBlockNames()
     {
         addPlants();
+        addMisc();
     }
 
     private static void addPlants()
     {
         addWaterPlants();
     }
+    
+    private static void addMisc()
+    {
+    	GameRegistry.registerBlock(beeHive, "BeeHive");
+    }
 
     private static void addWaterPlants()
     {
-        setupName(weed);
-        setupName(weedWithEggs);
-    }
-
-    private static void setupName(Block b)
-    {
-        String name = "";
-        String newName = "";
-
-        if (b instanceof BlockWaterPlant)
-        {
-            name = (((BlockWaterPlant) b).name);
-            newName = name;
-        }
-
-        if (b instanceof BlockWeedWithEggs)
-        {
-            name = (((BlockWeedWithEggs) b).name);
-            newName = name;
-        }
-
-        removeStringAfterChar(newName, '-');
-        removeStringAfterChar(newName, '#');
-        newName = newName.replaceAll("_", " ");
-        GameRegistry.registerBlock(b, name);
-        LanguageRegistry.addName(b, newName);
+        GameRegistry.registerBlock(weed, "Weeds");
+        GameRegistry.registerBlock(weedWithEggs, "Weeds_With_Eggs");
     }
 
     public static boolean checkForChar(String s, char c)

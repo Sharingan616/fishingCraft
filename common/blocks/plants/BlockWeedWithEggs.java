@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import fishingcraft.common.blocks.FCBlock;
-import fishingcraft.common.items.FCItem;
+import fishingcraft.common.items.FCItems;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 /**
@@ -21,14 +21,14 @@ public class BlockWeedWithEggs extends BlockWaterPlant
 {
     public static String name;
 
-    public BlockWeedWithEggs(int id, String n)
+    public BlockWeedWithEggs(String n)
     {
-        super(id, n);
+        super(n);
         this.blockHardness = 0.0F;
     }
 
     @Override
-    public boolean removeBlockByPlayer(World world, EntityPlayer player, int x, int y, int z)
+    public boolean removedByPlayer(World world, EntityPlayer player, int x, int y, int z)
     {
         int i = this.rand.nextInt(100);
         int n = 0;
@@ -42,8 +42,8 @@ public class BlockWeedWithEggs extends BlockWaterPlant
             n = 2;
         }
 
-        dropBlockAsItem_do(world, x, y, z, new ItemStack(FCItem.frogEggs, n));
-        world.setBlock(x, y, z, FCBlock.weed.blockID);
+        dropBlockAsItem(world, x, y, z, new ItemStack(FCItems.frogeggs, n));
+        world.setBlock(x, y, z, FCBlock.weed);
         return false;
     }
 
@@ -63,7 +63,8 @@ public class BlockWeedWithEggs extends BlockWaterPlant
     }
 
     @Override
-    public ArrayList<ItemStack> onSheared(ItemStack item, World world, int x, int y, int z, int fortune)
+    public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world,
+			int x, int y, int z, int fortune)
     {
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
         ret.add(new ItemStack(this, 0, world.getBlockMetadata(x, y, z)));
@@ -73,13 +74,13 @@ public class BlockWeedWithEggs extends BlockWaterPlant
     public void setName(String n)
     {
         this.name = n;
-        this.setUnlocalizedName(n);
+        //this.setUnlocalizedName(n);
     }
 
-    @Override
-    public void registerIcons(IconRegister par1IconRegister)
-    {
-        String folder = "plants";
-        this.blockIcon = par1IconRegister.registerIcon("fishingCraft:" + folder + "/" + name);
-    }
+//    @Override
+//    public void registerIcons(IconRegister par1IconRegister)
+//    {
+//        String folder = "plants";
+//        this.blockIcon = par1IconRegister.registerIcon("fishingCraft:" + folder + "/" + name);
+//    }
 }

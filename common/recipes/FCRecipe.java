@@ -1,11 +1,15 @@
 package fishingcraft.common.recipes;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import fishingcraft.common.items.FCItem;
+import fishingcraft.common.items.FCItems;
+import fishingcraft.common.items.fish.ItemFish;
+import fishingcraft.common.items.rods.ItemIronFishingRod;
 import fishingcraft.shar.util.Debug;
 import fishingcraft.shar.util.ItemHelper;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 /**
  * This class defines the recipes used to create both items and blocks.
@@ -14,73 +18,92 @@ import net.minecraft.item.ItemStack;
  */
 public class FCRecipe
 {
-    public static void addRecipes()
-    {
-        ItemHelper.removeRecipe(new ItemStack(Item.fishingRod));
-        addRodRecipes();
-        addFishRecipes();
-        addSeaFishRecipes();
-        addFishMeatRecipes();
-        addMiscRecipes();
-    }
+	public static void addRecipes()
+	{
+		ItemHelper.removeRecipe(new ItemStack(Items.fishing_rod));
+		addRodRecipes();
+		addFishRecipes();
+		addSeaFishRecipes();
+		addFishMeatRecipes();
+		addMiscRecipes();
+	}
 
-    private static void addRodRecipes()
-    {
-        GameRegistry.addRecipe(new ItemStack(FCItem.woodenFishingRod), "  x", " xy", "x y",
-                'x', new ItemStack(Item.stick), 'y', new ItemStack(Item.silk));
-        GameRegistry.addRecipe(new ItemStack(FCItem.ironFishingRod), "  z", " zy", "x y",
-                'x', new ItemStack(Item.stick), 'z', new ItemStack(Item.ingotIron), 'y', new ItemStack(Item.silk));
+	private static void addRodRecipes()
+	{
+		GameRegistry.addRecipe(new ItemStack(FCItems.woodenFishingRod), "  x", " xy", "x y",
+				'x', new ItemStack(Items.stick), 'y', new ItemStack(Items.string));
+		GameRegistry.addRecipe(new ItemStack(FCItems.ironFishingRod), "  z", " zy", "x y",
+				'x', new ItemStack(Items.stick), 'z', new ItemStack(Items.iron_ingot), 'y', new ItemStack(Items.string));
 
-        for (int i = 0; i <= FCItem.woodenFishingRod.getMaxDamage(); i++)
-        {
-            GameRegistry.addShapelessRecipe(new ItemStack(FCItem.woodenFishingRodWorm, 1, i), new ItemStack(FCItem.woodenFishingRod, 1, i), new ItemStack(FCItem.worm));
-            GameRegistry.addShapelessRecipe(new ItemStack(FCItem.woodenFishingRodBG, 1, i), new ItemStack(FCItem.woodenFishingRod, 1, i), new ItemStack(FCItem.fishBlueGillRaw));
-            GameRegistry.addShapelessRecipe(new ItemStack(FCItem.woodenFishingRodMorsel, 1, i), new ItemStack(FCItem.woodenFishingRod, 1, i), new ItemStack(FCItem.rawFishMorsel));
-            GameRegistry.addShapelessRecipe(new ItemStack(FCItem.woodenFishingRodFrogEggs, 1, i), new ItemStack(FCItem.woodenFishingRod, 1, i), new ItemStack(FCItem.frogEggs));
-            GameRegistry.addShapelessRecipe(new ItemStack(FCItem.woodenFishingRodSP, 1, i), new ItemStack(FCItem.woodenFishingRod, 1, i), new ItemStack(FCItem.fishSmallPiranhaRaw));
-        }
+		for (int i = 0; i <= FCItems.woodenFishingRod.getMaxDamage(); i++)
+		{
+			addRodRecipe(FCItems.woodenFishingRodWorm, FCItems.worm, i);
+			addRodRecipe(FCItems.woodenFishingRodBG, FCItems.fishBlueGillRaw, i);
+			addRodRecipe(FCItems.woodenFishingRodMorsel, FCItems.rawFishMorsel, i);
+			addRodRecipe(FCItems.woodenFishingRodFrogEggs, FCItems.frogeggs, i);
+			addRodRecipe(FCItems.woodenFishingRodSP, FCItems.fishSmallPiranhaRaw, i);
+		}
 
-        for (int i = 0; i <= FCItem.ironFishingRod.getMaxDamage(); i++)
-        {
-            GameRegistry.addShapelessRecipe(new ItemStack(FCItem.ironFishingRodWorm, 1, i), new ItemStack(FCItem.ironFishingRod, 1, i), new ItemStack(FCItem.worm));
-            GameRegistry.addShapelessRecipe(new ItemStack(FCItem.ironFishingRodBG, 1, i), new ItemStack(FCItem.ironFishingRod, 1, i), new ItemStack(FCItem.fishBlueGillRaw));
-            GameRegistry.addShapelessRecipe(new ItemStack(FCItem.ironFishingRodMorsel, 1, i), new ItemStack(FCItem.ironFishingRod, 1, i), new ItemStack(FCItem.rawFishMorsel));
-            GameRegistry.addShapelessRecipe(new ItemStack(FCItem.ironFishingRodFrogEggs, 1, i), new ItemStack(FCItem.ironFishingRod, 1, i), new ItemStack(FCItem.frogEggs));
-            GameRegistry.addShapelessRecipe(new ItemStack(FCItem.ironFishingRodSP, 1, i), new ItemStack(FCItem.ironFishingRod, 1, i), new ItemStack(FCItem.fishSmallPiranhaRaw));
-        }
-    }
+		for (int i = 0; i <= FCItems.ironFishingRod.getMaxDamage(); i++)
+		{
+			addRodRecipe(FCItems.ironFishingRodWorm, FCItems.worm, i);
+			addRodRecipe(FCItems.ironFishingRodBG, FCItems.fishBlueGillRaw, i);
+			addRodRecipe(FCItems.ironFishingRodMorsel, FCItems.rawFishMorsel, i);
+			addRodRecipe(FCItems.ironFishingRodFrogEggs, FCItems.frogeggs, i);
+			addRodRecipe(FCItems.ironFishingRodSP, FCItems.fishSmallPiranhaRaw, i);
+		}
+	}
 
-    private static void addFishRecipes()
-    {
-        GameRegistry.addSmelting(FCItem.fishSalmonRaw.itemID, new ItemStack(FCItem.fishSalmonCooked), 0.35F);
-        GameRegistry.addSmelting(FCItem.fishCatRaw.itemID, new ItemStack(FCItem.fishCatCooked), 0.35F);
-        GameRegistry.addSmelting(FCItem.fishBlueGillRaw.itemID, new ItemStack(FCItem.fishBlueGillCooked), 0.35F);
-        GameRegistry.addSmelting(FCItem.fishSuckerRaw.itemID, new ItemStack(FCItem.fishSuckerCooked), 0.35F);
-        GameRegistry.addSmelting(FCItem.fishCarpRaw.itemID, new ItemStack(FCItem.fishCarpCooked), 0.35F);
-        GameRegistry.addSmelting(FCItem.fishBassRaw.itemID, new ItemStack(FCItem.fishBassCooked), 0.35F);
-        GameRegistry.addSmelting(FCItem.fishPikeRaw.itemID, new ItemStack(FCItem.fishPikeCooked), 0.35F);
-        GameRegistry.addSmelting(FCItem.fishPeaBassRaw.itemID, new ItemStack(FCItem.fishPeaBassCooked), 0.35F);
-        GameRegistry.addSmelting(FCItem.fishGoldFishRaw.itemID, new ItemStack(FCItem.fishGoldFishCooked), 0.35F);
-        GameRegistry.addSmelting(FCItem.fishSmallPiranhaRaw.itemID, new ItemStack(FCItem.fishSmallPiranhaCooked), 0.35F);
-    }
+	private static void addFishRecipes()
+	{
+		//GameRegistry.addSmelting(FCItem.fishSalmonRaw.itemID, new ItemStack(FCItem.fishSalmonCooked), 0.35F);
+		GameRegistry.addSmelting(FCItems.fishCatRaw, new ItemStack(FCItems.fishCatCooked), 0.35F);
+		GameRegistry.addSmelting(FCItems.fishBlueGillRaw, new ItemStack(FCItems.fishBlueGillCooked), 0.35F);
+		GameRegistry.addSmelting(FCItems.fishSuckerRaw, new ItemStack(FCItems.fishSuckerCooked), 0.35F);
+		GameRegistry.addSmelting(FCItems.fishCarpRaw, new ItemStack(FCItems.fishCarpCooked), 0.35F);
+		GameRegistry.addSmelting(FCItems.fishBassRaw, new ItemStack(FCItems.fishBassCooked), 0.35F);
+		GameRegistry.addSmelting(FCItems.fishPikeRaw, new ItemStack(FCItems.fishPikeCooked), 0.35F);
+		GameRegistry.addSmelting(FCItems.fishPeaBassRaw, new ItemStack(FCItems.fishPeaBassCooked), 0.35F);
+		GameRegistry.addSmelting(FCItems.fishGoldFishRaw, new ItemStack(FCItems.fishGoldFishCooked), 0.35F);
+		GameRegistry.addSmelting(FCItems.fishSmallPiranhaRaw, new ItemStack(FCItems.fishSmallPiranhaCooked), 0.35F);
+		GameRegistry.addSmelting(FCItems.fishTenchRaw, new ItemStack(FCItems.fishTenchCooked), 0.35F);
+		GameRegistry.addSmelting(FCItems.fishMackerelRaw, new ItemStack(FCItems.fishMackerelCooked), 0.35F);
+	}
 
-    private static void addSeaFishRecipes()
-    {
-        GameRegistry.addShapelessRecipe(new ItemStack(FCItem.rawTunaStrip, 2), new ItemStack(FCItem.fishYFTuna));
-        GameRegistry.addShapelessRecipe(new ItemStack(FCItem.rawTunaStrip, 2), new ItemStack(FCItem.fishBFTuna));
-    }
+	private static void addSeaFishRecipes()
+	{
+		GameRegistry.addShapelessRecipe(new ItemStack(FCItems.rawTunaStrip, 2), new ItemStack(FCItems.fishYFTuna));
+		GameRegistry.addShapelessRecipe(new ItemStack(FCItems.rawTunaStrip, 2), new ItemStack(FCItems.fishBFTuna));
+	}
 
-    private static void addFishMeatRecipes()
-    {
-        GameRegistry.addShapelessRecipe(new ItemStack(FCItem.rawFishMorsel, 2), new ItemStack(FCItem.rawTunaStrip));
-        GameRegistry.addShapelessRecipe(new ItemStack(FCItem.cookedFishMorsel, 2), new ItemStack(FCItem.cookedTunaStrip));
-        GameRegistry.addSmelting(FCItem.rawTunaStrip.itemID, new ItemStack(FCItem.cookedTunaStrip), 0.35F);
-        GameRegistry.addSmelting(FCItem.rawFishMorsel.itemID, new ItemStack(FCItem.cookedFishMorsel), 0.35F);
-    }
+	private static void addFishMeatRecipes()
+	{
+		GameRegistry.addShapelessRecipe(new ItemStack(FCItems.rawFishMorsel, 2), new ItemStack(FCItems.rawTunaStrip));
+		GameRegistry.addShapelessRecipe(new ItemStack(FCItems.cookedFishMorsel, 2), new ItemStack(FCItems.cookedTunaStrip));
+		GameRegistry.addSmelting(FCItems.rawTunaStrip, new ItemStack(FCItems.cookedTunaStrip), 0.35F);
+		GameRegistry.addSmelting(FCItems.rawFishMorsel, new ItemStack(FCItems.cookedFishMorsel), 0.35F);
+	}
 
-    private static void addMiscRecipes()
-    {
-        GameRegistry.addShapelessRecipe(new ItemStack(Item.carrotOnAStick), new ItemStack(FCItem.woodenFishingRod), new ItemStack(Item.carrot));
-        GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 15), new ItemStack(FCItem.fishBones));
-    }
+	private static void addMiscRecipes()
+	{
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.carrot_on_a_stick), new ItemStack(FCItems.woodenFishingRod), new ItemStack(Items.carrot));
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.dye, 1, 15), new ItemStack(FCItems.fishbones));
+	}
+
+	private static void addRodRecipe(Item rod, Item bait, int damage)
+	{
+		Item baseRod;
+		if(rod instanceof ItemIronFishingRod)
+			baseRod = FCItems.ironFishingRod;
+		else
+			baseRod = FCItems.woodenFishingRod;
+		if(bait instanceof ItemFish)
+		{
+			GameRegistry.addShapelessRecipe(new ItemStack(rod, 1, damage), new ItemStack(baseRod, 1, damage), new ItemStack(bait, 1, OreDictionary.WILDCARD_VALUE));
+		}
+		else
+		{
+			GameRegistry.addShapelessRecipe(new ItemStack(rod, 1, damage), new ItemStack(baseRod, 1, damage), new ItemStack(bait));
+		}
+	}
 }

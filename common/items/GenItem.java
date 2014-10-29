@@ -1,8 +1,7 @@
 package fishingcraft.common.items;
 
-import fishingcraft.common.CommonProxyFishingCraft;
-import fishingcraft.common.dictionary.ItemDictionary;
-import net.minecraft.client.renderer.texture.IconRegister;
+import cpw.mods.fml.common.registry.GameRegistry;
+import fishingcraft.main.FishingCraft;
 import net.minecraft.item.Item;
 
 /**
@@ -14,29 +13,31 @@ public class GenItem extends Item
 {
     public String name = "";
 
-    public GenItem(int par1, String n)
+    public GenItem(String n)
     {
-        super(par1);
+        super();
         this.setName(n);
+        this.setCreativeTab(FishingCraft.fcTab);
+        GameRegistry.registerItem(this, n);
+        setTextureName(FishingCraft.MODID.toLowerCase()+":misc/"+n);
     }
 
     public void setName(String n)
     {
         this.name = n;
         this.setUnlocalizedName(n);
-        ItemDictionary.add(this);
     }
 
-    @Override
-    public void registerIcons(IconRegister iconRegister)
-    {
-        String folder = "misc";
-
-        if (name.endsWith("SEA"))
-        {
-            folder = "fish/sea";
-        }
-
-        itemIcon = iconRegister.registerIcon("fishingCraft:" + folder + "/" + name);
-    }
+//    @Override
+//    public void registerIcons(IconRegister iconRegister)
+//    {
+//        String folder = "misc";
+//
+//        if (name.endsWith("SEA"))
+//        {
+//            folder = "fish/sea";
+//        }
+//
+//        itemIcon = iconRegister.registerIcon("fishingCraft:" + folder + "/" + name);
+//    }
 }
