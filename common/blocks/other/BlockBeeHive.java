@@ -31,6 +31,7 @@ public class BlockBeeHive extends Block {
 		super(Material.wood);
 		this.setCreativeTab(FishingCraft.fcTab);
 		this.setBlockName(name);
+		this.setHardness(3);
 	}
 
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
