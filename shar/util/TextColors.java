@@ -3,6 +3,7 @@ package fishingcraft.shar.util;
 /**
  * This class defines popular text colors as strings.
  * 
+ * 
  * @author Sharingan616 / Benjamin Tovar-Prince (http://benjamintovar-prince.com)
  */
 public class TextColors {
