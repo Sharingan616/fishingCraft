@@ -24,6 +24,7 @@ public class FCItems
 	public static final Item worm = new GenItem("Worm").setFull3D();
 	public static final Item fishbones = new GenItem("Fish_Bones").setFull3D();
 	public static final Item frogeggs = new GenItem("Frog_Eggs").setFull3D();
+	public static final Item honeyComb = new GenItem("Honey Comb").setFull3D();
 	
     //Fish
     //public static final Item fishSalmonRaw = (new ItemFish(2, "Salmon")).setPotionEffect(Potion.hunger.id, 30, 0, 0.8F);
