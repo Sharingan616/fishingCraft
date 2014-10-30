@@ -47,7 +47,6 @@ public class BlockWeedWithEggs extends BlockWaterPlant
         return false;
     }
 
-//	@Override
     public boolean isShearable()
     {
         return false;

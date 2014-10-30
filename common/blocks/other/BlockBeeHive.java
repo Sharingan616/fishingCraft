@@ -5,12 +5,15 @@ import java.util.Random;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
+import fishingcraft.common.items.FCItems;
 import fishingcraft.main.FishingCraft;
+import fishingcraft.shar.util.Debug;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockWood;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
@@ -83,4 +86,21 @@ public class BlockBeeHive extends Block {
 		this.bottom = par1IIconRegister.registerIcon(FishingCraft.MODID+":"+dir+"_bottom");
 		this.side = par1IIconRegister.registerIcon(FishingCraft.MODID+":"+dir+"_side");
 	}
+	
+    @Override
+    public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
+    {
+        return FCItems.honeyComb;  
+    }
+    
+    @Override
+    /**
+     * Returns the quantity of items to drop on block destruction.
+     */
+    public int quantityDropped(Random rand)
+    {
+        return 3;
+    }
+
+
 }
