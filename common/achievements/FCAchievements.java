@@ -8,8 +8,8 @@ import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
 
 /**
- * @author Shar
- *
+ * Contains all achiements Fishing Craft adds to the game.
+ * @author Sharingan616
  */
 public class FCAchievements {
 	public static Achievement woodenFishingRod = new Achievement("achievement.woodenFishingRod", "woodenFishingRod", 0, 0, FCItems.woodenFishingRod, (Achievement)null);
