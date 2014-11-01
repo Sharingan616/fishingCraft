@@ -14,7 +14,7 @@ import fishingcraft.shar.util.Debug;
 
 /**
  * This class is used to generate custom blocks into the Minecraft world.
- * Currently generates weeds.
+ * Currently generates weeds and beehives.
  * @author Sharingan616
  *
  */
