@@ -80,13 +80,5 @@ public class BlockWeedWithEggs extends BlockWaterPlant
     public void setName(String n)
     {
         this.name = n;
-        //this.setUnlocalizedName(n);
     }
-
-//    @Override
-//    public void registerIcons(IconRegister par1IconRegister)
-//    {
-//        String folder = "plants";
-//        this.blockIcon = par1IconRegister.registerIcon("fishingCraft:" + folder + "/" + name);
-//    }
 }
