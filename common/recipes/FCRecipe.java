@@ -108,6 +108,12 @@ public class FCRecipe
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.dye, 1, 15), new ItemStack(FCItems.fishbones));
 	}
 
+	/**
+	 * Adds a recipe pertaining to a fishing rod. This is used to add bait.
+	 * @param rod - the fishing rod item
+	 * @param bait - the bait to be attached to the rod
+	 * @param damage - the damage of the rod item
+	 */
 	private static void addRodRecipe(Item rod, Item bait, int damage)
 	{
 		Item baseRod;
