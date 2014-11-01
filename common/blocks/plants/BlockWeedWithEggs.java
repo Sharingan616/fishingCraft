@@ -60,6 +60,9 @@ public class BlockWeedWithEggs extends BlockWaterPlant
     }
 
     @Override
+    /**
+     * Runs when the block is harvested.
+     */
     public void harvestBlock(World par1World, EntityPlayer par2EntityPlayer, int par3, int par4, int par5, int par6) {}
 
     @Override
