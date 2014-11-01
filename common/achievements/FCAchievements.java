@@ -20,6 +20,9 @@ public class FCAchievements {
 	public static Achievement freshFish20lb = new Achievement("achievement.freshFish20lb", "freshFish20lb", 2, -2, FCItems.fishPeaBassRaw, firstFish);
 	public static Achievement bassEffect = new Achievement("achievement.bassEffect", "bassEffect", 4, -2, FCItems.fishBassRaw, freshFish20lb);	
 	
+	/**
+	 * Registers all the previously described achievemtns
+	 */
 	public static void registerAchievments()
 	{
 		woodenFishingRod.registerStat();
