@@ -59,6 +59,9 @@ public class BlockBeeHive extends Block {
 	}
 
 	@SideOnly(Side.CLIENT)
+	/**
+	 * Registers the textures of the block to the game.
+	 */
 	public void registerBlockIcons(IIconRegister par1IIconRegister){
 		this.blockIcon = par1IIconRegister.registerIcon(FishingCraft.MODID+":"+dir+"_front");
 		this.top = par1IIconRegister.registerIcon(FishingCraft.MODID+":"+dir+"_top");
