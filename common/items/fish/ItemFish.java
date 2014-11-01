@@ -95,6 +95,12 @@ public class ItemFish extends ItemFood
         this.setUnlocalizedName(n);
     }
     
+    /**
+     * Sets the weight of the item. The weight is based off of a negative amount of damage.
+     * The damage must be negative in order for the health bar to not be rendered.
+     * @param w - weight of the item
+     * @param stack - item stack
+     */
     public void setWeight(double w, ItemStack stack)
     {
     	int calculation = (int)((this.getWeight(stack)-w)*100.0);
