@@ -32,7 +32,7 @@ public class FCRecipe
 	}
 
 	/**
-	 * This method is used to add all the recipes of the rods to the came
+	 * Adds all the recipes of the rods to the came
 	 */
 	private static void addRodRecipes()
 	{
@@ -61,7 +61,7 @@ public class FCRecipe
 	}
 
 	/**
-	 * This method is used to add all the recipes of the fish to the game.
+	 * Adds all the recipes of the fish to the game.
 	 * This pertains to smelting and crafting.
 	 */
 	private static void addFishRecipes()
@@ -99,6 +99,9 @@ public class FCRecipe
 		GameRegistry.addSmelting(FCItems.rawFishMorsel, new ItemStack(FCItems.cookedFishMorsel), 0.35F);
 	}
 
+	/**
+	 * Adds recipes pertaining to misc. items
+	 */
 	private static void addMiscRecipes()
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.carrot_on_a_stick), new ItemStack(FCItems.woodenFishingRod), new ItemStack(Items.carrot));
