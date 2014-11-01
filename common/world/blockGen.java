@@ -92,12 +92,9 @@ public class blockGen implements IWorldGenerator
 			for (int j = -radius; i <= radius; i++)
 			{
 				if (world.getBiomeGenForCoords(x + i, z + j) == biome)
-				{
 					return true;
-				}
 			}
 		}
-
 		return false;
 	}
 }
