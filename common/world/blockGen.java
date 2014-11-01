@@ -61,7 +61,11 @@ public class blockGen implements IWorldGenerator
 					//Bee Hive Spawning
 					if(currentBiome == BiomeGenBase.forest || currentBiome == BiomeGenBase.birchForest && Math.random() > 0.7)
 					{
-						if(blockIdAbove == Block.getIdFromBlock(Blocks.leaves) && Block.getIdFromBlock(world.getBlock(xCoord, i, zCoord-1)) == Block.getIdFromBlock(Blocks.log) && Block.getIdFromBlock(world.getBlock(xCoord-1, i, zCoord)) == Block.getIdFromBlock(Blocks.air) && blockIdBelow == Block.getIdFromBlock(Blocks.air) && Block.getIdFromBlock(world.getBlock(xCoord, i-2, zCoord)) == Block.getIdFromBlock(Blocks.air))
+						if(blockIdAbove == Block.getIdFromBlock(Blocks.leaves) &&
+								Block.getIdFromBlock(world.getBlock(xCoord, i, zCoord-1)) == Block.getIdFromBlock(Blocks.log) &&
+								Block.getIdFromBlock(world.getBlock(xCoord-1, i, zCoord)) == Block.getIdFromBlock(Blocks.air) &&
+								blockIdBelow == Block.getIdFromBlock(Blocks.air) &&
+								Block.getIdFromBlock(world.getBlock(xCoord, i-2, zCoord)) == Block.getIdFromBlock(Blocks.air))
 						{
 							world.setBlock(xCoord, i, zCoord, FCBlock.beeHive);
 							Debug.println("Spawning bee hive at "+xCoord+", "+zCoord);
