@@ -128,6 +128,9 @@ public class ItemFish extends ItemFood
     }
     
     @Override
+    /**
+     * Returns the limit of stacking the item
+     */
     public int getItemStackLimit()
     {
     	return 1;
