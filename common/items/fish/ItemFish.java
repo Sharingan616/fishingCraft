@@ -129,7 +129,7 @@ public class ItemFish extends ItemFood
     
     @Override
     /**
-     * Returns the limit of stacking the item
+     * Returns the stacking limit of the item.
      */
     public int getItemStackLimit()
     {
