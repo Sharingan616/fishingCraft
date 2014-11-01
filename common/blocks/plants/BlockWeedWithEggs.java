@@ -47,6 +47,10 @@ public class BlockWeedWithEggs extends BlockWaterPlant
         return false;
     }
 
+    /**
+     * Determines whether or not the block can be farmed with shears.
+     * @return the block cannot be sheared
+     */
     public boolean isShearable()
     {
         return false;
