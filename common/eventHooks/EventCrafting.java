@@ -8,6 +8,11 @@ import fishingcraft.common.items.FCItems;
 public class EventCrafting {
 
 	@SubscribeEvent
+	/**
+	 * This event triggers when a rod is created.
+	 * It is currently used to add achievements.
+	 * @param event
+	 */
 	public void RodCrafting(ItemCraftedEvent event)
 	{
 		if(event.crafting.getItem() == FCItems.woodenFishingRod)
