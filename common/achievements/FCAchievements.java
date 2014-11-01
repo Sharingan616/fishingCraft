@@ -8,7 +8,7 @@ import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
 
 /**
- * Contains all achiements Fishing Craft adds to the game.
+ * Contains all achievement Fishing Craft adds to the game.
  * @author Sharingan616
  */
 public class FCAchievements {
@@ -21,7 +21,7 @@ public class FCAchievements {
 	public static Achievement bassEffect = new Achievement("achievement.bassEffect", "bassEffect", 4, -2, FCItems.fishBassRaw, freshFish20lb);	
 	
 	/**
-	 * Registers all the previously described achievemtns
+	 * Registers all the previously described achievements
 	 */
 	public static void registerAchievments()
 	{
