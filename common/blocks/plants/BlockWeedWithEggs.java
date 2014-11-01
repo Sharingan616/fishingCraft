@@ -66,6 +66,10 @@ public class BlockWeedWithEggs extends BlockWaterPlant
     public void harvestBlock(World par1World, EntityPlayer par2EntityPlayer, int par3, int par4, int par5, int par6) {}
 
     @Override
+    /**
+     * Returns the id of what should be dropped.
+     * If this number is set to -1, no item/block is dropped.
+     */
     public int idDropped(int par1, Random par2Random, int par3)
     {
         return -1;
