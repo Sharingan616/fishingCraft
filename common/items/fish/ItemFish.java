@@ -108,6 +108,11 @@ public class ItemFish extends ItemFood
     	this.setDamage(stack, calculation);
     }
     
+    /**
+     * Returns the weight of the item. The weight of the item is calculated from the damage of the item.
+     * @param stack - item stack
+     * @return - weight of  the item
+     */
     public double getWeight(ItemStack stack)
     {
     	return (Math.abs(this.getMaxDamage())-this.getDamage(stack))/100.0;
