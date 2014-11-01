@@ -76,6 +76,9 @@ public class BlockWeedWithEggs extends BlockWaterPlant
     }
 
     @Override
+    /**
+     * Runs when the block is sheared.
+     */
     public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world,
 			int x, int y, int z, int fortune)
     {
