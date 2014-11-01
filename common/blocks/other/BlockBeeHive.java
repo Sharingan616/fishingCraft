@@ -28,10 +28,12 @@ public class BlockBeeHive extends Block {
 	private IIcon bottom;
 	private String dir = "/other/BeeHive";
 	public BlockBeeHive(String name) {
-		super(Material.wood);
+		super(Material.ground);
 		this.setCreativeTab(FishingCraft.fcTab);
 		this.setBlockName(name);
 		this.setHardness(3);
+		
+		
 	}
 
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
