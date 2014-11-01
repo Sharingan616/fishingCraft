@@ -28,6 +28,9 @@ public class BlockWeedWithEggs extends BlockWaterPlant
     }
 
     @Override
+    /**
+     * Run when the player removes the block.
+     */
     public boolean removedByPlayer(World world, EntityPlayer player, int x, int y, int z)
     {
         int i = this.rand.nextInt(100);
