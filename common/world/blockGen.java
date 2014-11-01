@@ -48,13 +48,9 @@ public class blockGen implements IWorldGenerator
 							int randomNum = random.nextInt(100);
 
 							if (randomNum < 40)
-							{
 								world.setBlock(xCoord, i, zCoord, FCBlock.weed);
-							}
 							else if (randomNum < 50)
-							{
 								world.setBlock(xCoord, i, zCoord, FCBlock.weedWithEggs);
-							}
 						}
 					}
 
