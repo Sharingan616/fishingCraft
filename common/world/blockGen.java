@@ -21,6 +21,9 @@ import fishingcraft.shar.util.Debug;
 public class blockGen implements IWorldGenerator
 {
 	@Override
+	/**
+	 * Generates all Fishing Craft blocks into the world.
+	 */
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
 		int boundry = 6;
