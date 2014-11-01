@@ -62,6 +62,7 @@ public class FCRecipe
 
 	/**
 	 * This method is used to add all the recipes of the fish to the game.
+	 * This pertains to smelting and crafting.
 	 */
 	private static void addFishRecipes()
 	{
