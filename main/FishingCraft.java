@@ -60,7 +60,7 @@ public class FishingCraft
     {
         Debug.modName = MODID;
         Debug.debugger = this.debug;
-        fcBlock.addBlockNames();
+        fcBlock.registerBlockNames();
         fcRecipe.addRecipes();
         FCAchievements.registerAchievments();
     	AchievementPage.registerAchievementPage(new AchievementPage("Fishing Craft", new Achievement[]{FCAchievements.woodenFishingRod, FCAchievements.ironFishingRod, FCAchievements.firstFish, FCAchievements.seaFish, FCAchievements.bassEffect, FCAchievements.freshFish20lb, FCAchievements.seaFish20lb}));

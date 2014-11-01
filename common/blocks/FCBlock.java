@@ -23,7 +23,7 @@ public class FCBlock
     public static Block weedWithEggs = (new BlockWeedWithEggs("Weeds_With_Eggs"));
     public static Block beeHive = new BlockBeeHive("BeeHive");
     
-    public static void addBlockNames()
+    public static void registerBlockNames()
     {
         addPlants();
         addMisc();
