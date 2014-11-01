@@ -77,6 +77,10 @@ public class BlockWeedWithEggs extends BlockWaterPlant
         return ret;
     }
 
+    /**
+     * Sets the name of the block
+     * @param n - name of block
+     */
     public void setName(String n)
     {
         this.name = n;
