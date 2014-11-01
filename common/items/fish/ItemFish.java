@@ -118,6 +118,9 @@ public class ItemFish extends ItemFood
     	return (Math.abs(this.getMaxDamage())-this.getDamage(stack))/100.0;
     }
     
+    /**
+     * Adds information to the item for display once the mouse hovers over the item in storage.
+     */
     public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
     {
     	if(this.getWeight(par1ItemStack) != 0)
