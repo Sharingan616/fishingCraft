@@ -72,6 +72,16 @@ public class blockGen implements IWorldGenerator
 		}
 	}
 
+	/**
+	 * Returns whether or not a block or item is near a biome. The detection of this is modified
+	 * by radius parameters and location of an entity.
+	 * @param radius
+	 * @param biome
+	 * @param X - x location of entity
+	 * @param Z - z location of entity
+	 * @param world
+	 * @return
+	 */
 	public boolean isNearBiome(int radius, BiomeGenBase biome, double X, double Z, World world)
 	{
 		int x = (int)(X);
