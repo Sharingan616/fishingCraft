@@ -32,8 +32,8 @@ public class ItemFish extends ItemFood
 
     /**
      * Constructor for ItemFish
-     * @param healAmount
-     * @param isWolfsFavoriteMeat
+     * @param healAmount 			- the amount the item should heal the player when consumed
+     * @param isWolfsFavoriteMeat 	- whether the item can interact with wolves
      * @param n
      */
     public ItemFish(int healAmount, float isWolfsFavoriteMeat, String n)
@@ -49,7 +49,7 @@ public class ItemFish extends ItemFood
     /**
      * Second constructor for ItemFish. With this method, you do not have to define
      * whether or not the fish is a favorite food for wolves.
-     * @param healamount
+     * @param healamount - the amount the item should heal the player when consumed
      * @param n
      */
     public ItemFish(int healamount, String n)
@@ -63,7 +63,7 @@ public class ItemFish extends ItemFood
     }
 
     /**
-     * Runs when the item is eaten
+     * Runs when the item is eaten.
      */
     public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player)
     {
