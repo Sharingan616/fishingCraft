@@ -35,17 +35,4 @@ public class GenItem extends Item
         this.name = n;
         this.setUnlocalizedName(n);
     }
-
-//    @Override
-//    public void registerIcons(IconRegister iconRegister)
-//    {
-//        String folder = "misc";
-//
-//        if (name.endsWith("SEA"))
-//        {
-//            folder = "fish/sea";
-//        }
-//
-//        itemIcon = iconRegister.registerIcon("fishingCraft:" + folder + "/" + name);
-//    }
 }
