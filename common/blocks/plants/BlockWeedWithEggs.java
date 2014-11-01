@@ -13,7 +13,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 /**
- * Class for Weed blocks that contain eggs
+ * Class for Weed blocks that contain eggs. Eggs are items that can be used as bait for cacthing fish.
  * @author Sharingan616
  *
  */
