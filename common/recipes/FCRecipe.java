@@ -66,7 +66,6 @@ public class FCRecipe
 	 */
 	private static void addFishRecipes()
 	{
-		//GameRegistry.addSmelting(FCItem.fishSalmonRaw.itemID, new ItemStack(FCItem.fishSalmonCooked), 0.35F);
 		GameRegistry.addSmelting(FCItems.fishCatRaw, new ItemStack(FCItems.fishCatCooked), 0.35F);
 		GameRegistry.addSmelting(FCItems.fishBlueGillRaw, new ItemStack(FCItems.fishBlueGillCooked), 0.35F);
 		GameRegistry.addSmelting(FCItems.fishSuckerRaw, new ItemStack(FCItems.fishSuckerCooked), 0.35F);
