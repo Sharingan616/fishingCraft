@@ -32,8 +32,6 @@ public class BlockBeeHive extends Block {
 		this.setCreativeTab(FishingCraft.fcTab);
 		this.setBlockName(name);
 		this.setHardness(3);
-		
-		
 	}
 
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
@@ -58,7 +56,6 @@ public class BlockBeeHive extends Block {
 				double var7 = (double)par2 + 0.5D + 0.25D * (double)var19;
 				var13 = (double)(par5Random.nextFloat() * 1.0F * (float)var19);
 				//TODO Add Bee particles
-				//par1World.spawnParticle("portal", var7, var9, var11, var13, var15, var17);
 			}
 		}
 	}
@@ -89,21 +86,24 @@ public class BlockBeeHive extends Block {
 		this.bottom = par1IIconRegister.registerIcon(FishingCraft.MODID+":"+dir+"_bottom");
 		this.side = par1IIconRegister.registerIcon(FishingCraft.MODID+":"+dir+"_side");
 	}
-	
-    @Override
-    public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
-    {
-        return FCItems.honeyComb;  
-    }
-    
-    @Override
-    /**
-     * Returns the quantity of items to drop on block destruction.
-     */
-    public int quantityDropped(Random rand)
-    {
-        return 3;
-    }
+
+	@Override
+	/**
+	 * Returns the item the block should drop when destroyed.
+	 */
+	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
+	{
+		return FCItems.honeyComb;  
+	}
+
+	@Override
+	/**
+	 * Returns the quantity of items to drop on block destruction.
+	 */
+	public int quantityDropped(Random rand)
+	{
+		return 3;
+	}
 
 
 }
