@@ -18,6 +18,9 @@ import net.minecraftforge.oredict.OreDictionary;
  */
 public class FCRecipe
 {
+	/**
+	 * Adds all of the Fishing Craft recipes
+	 */
 	public static void addRecipes()
 	{
 		ItemHelper.removeRecipe(new ItemStack(Items.fishing_rod));
@@ -28,6 +31,9 @@ public class FCRecipe
 		addMiscRecipes();
 	}
 
+	/**
+	 * This method is used to add all the recipes of the rods to the came
+	 */
 	private static void addRodRecipes()
 	{
 		GameRegistry.addRecipe(new ItemStack(FCItems.woodenFishingRod), "  x", " xy", "x y",
@@ -54,6 +60,9 @@ public class FCRecipe
 		}
 	}
 
+	/**
+	 * This method is used to add all the recipes of the fish to the game.
+	 */
 	private static void addFishRecipes()
 	{
 		//GameRegistry.addSmelting(FCItem.fishSalmonRaw.itemID, new ItemStack(FCItem.fishSalmonCooked), 0.35F);
