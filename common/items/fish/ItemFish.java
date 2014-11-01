@@ -62,6 +62,9 @@ public class ItemFish extends ItemFood
     	this.setCreativeTab(FishingCraft.fcTab);
     }
 
+    /**
+     * Runs when the item is eaten
+     */
     public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player)
     {
         //Reduce stack size of consumed fish by 1
