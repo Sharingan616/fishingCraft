@@ -46,9 +46,15 @@ public class ItemFish extends ItemFood
     	this.setCreativeTab(FishingCraft.fcTab);
     }
     
-    public ItemFish(int par1, String n)
+    /**
+     * Second constructor for ItemFish. With this method, you do not have to define
+     * whether or not the fish is a favorite food for wolves.
+     * @param healamount
+     * @param n
+     */
+    public ItemFish(int healamount, String n)
     {
-    	super(par1, false);
+    	super(healamount, false);
     	this.setName(n);
         this.setMaxDamage(-10000);
         GameRegistry.registerItem(this,n);
