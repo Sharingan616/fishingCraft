@@ -30,9 +30,15 @@ public class ItemFish extends ItemFood
 {
     public String name = "";
 
-    public ItemFish(int par1, float par2, String n)
+    /**
+     * Constructor for ItemFish
+     * @param healAmount
+     * @param isWolfsFavoriteMeat
+     * @param n
+     */
+    public ItemFish(int healAmount, float isWolfsFavoriteMeat, String n)
     {
-    	super(par1, par2, false);
+    	super(healAmount, isWolfsFavoriteMeat, false);
     	this.setName(n);
         this.setMaxDamage(-10000);
         GameRegistry.registerItem(this,n);
