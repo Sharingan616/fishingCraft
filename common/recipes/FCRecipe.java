@@ -88,6 +88,9 @@ public class FCRecipe
 		GameRegistry.addShapelessRecipe(new ItemStack(FCItems.rawTunaStrip, 2), new ItemStack(FCItems.fishBFTuna));
 	}
 
+	/**
+	 * Adds recipes pertaining to fish meat.
+	 */
 	private static void addFishMeatRecipes()
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(FCItems.rawFishMorsel, 2), new ItemStack(FCItems.rawTunaStrip));
