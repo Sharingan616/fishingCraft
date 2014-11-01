@@ -26,6 +26,10 @@ public class GenItem extends Item
         setTextureName(FishingCraft.MODID.toLowerCase()+":misc/"+n);
     }
 
+    /**
+     * Sets the name of the item.
+     * @param n
+     */
     public void setName(String n)
     {
         this.name = n;
