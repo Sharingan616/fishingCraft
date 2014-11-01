@@ -79,6 +79,9 @@ public class FCRecipe
 		GameRegistry.addSmelting(FCItems.fishMackerelRaw, new ItemStack(FCItems.fishMackerelCooked), 0.35F);
 	}
 
+	/**
+	 * Adds recipes pertaining to Sea Fish
+	 */
 	private static void addSeaFishRecipes()
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(FCItems.rawTunaStrip, 2), new ItemStack(FCItems.fishYFTuna));
