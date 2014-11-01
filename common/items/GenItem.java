@@ -13,6 +13,10 @@ public class GenItem extends Item
 {
     public String name = "";
 
+    /**
+     * Constructor for GenItem
+     * @param n
+     */
     public GenItem(String n)
     {
         super();
