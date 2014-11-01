@@ -85,6 +85,10 @@ public class ItemFish extends ItemFood
         return stack;
     }
 
+    /**
+     * Sets the name of the item
+     * @param n - item name
+     */
     public void setName(String n)
     {
         this.name = n;
